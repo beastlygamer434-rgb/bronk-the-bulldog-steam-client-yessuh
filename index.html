@@ -2,14 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <!-- This line forces an instant breakout redirect to your direct stream URL -->
-    <meta http-equiv="refresh" content="0; url=https://moonlightweb.top">
-    <script>
-        // Backup script to force the breakout if the meta tag is restricted by a frame
-        window.top.location.href = "https://moonlightweb.top";
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bronk Client Portal</title>
+    <style>
+        body {
+            background-color: #05080b;
+            color: #eafdff;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- This loads the stream directly inside your custom page frame shell -->
+    <iframe 
+        src="https://moonlightweb.top" 
+        allow="autoplay; gamepad; fullscreen; cross-origin-isolated">
+    </iframe>
+
 </body>
 </html>
