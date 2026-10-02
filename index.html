@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        body { font-family: arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #fff; }
+        .logo { font-size: 90px; font-weight: bold; margin-bottom: 20px; }
+        .logo span:nth-child(1) { color: #4285F4; } .logo span:nth-child(2) { color: #EA4335; } .logo span:nth-child(3) { color: #FBBC05; } .logo span:nth-child(4) { color: #4285F4; } .logo span:nth-child(5) { color: #34A853; } .logo span:nth-child(6) { color: #EA4335; }
+        .search-box { width: 580px; padding: 12px 20px; border: 1px solid #dfe1e5; border-radius: 24px; font-size: 16px; outline: none; box-shadow: none; transition: box-shadow 0.2s; }
+        .search-box:hover, .search-box:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.28); border-color: rgba(223,225,229,0); }
+        .buttons { margin-top: 25px; }
+        .btn { background-color: #f8f9fa; border: 1px solid #f8f9fa; border-radius: 4px; color: #3c4043; font-family: Roboto,arial,sans-serif; font-size: 14px; margin: 11px 4px; padding: 0 16px; line-height: 27px; height: 36px; min-width: 54px; text-align: center; cursor: pointer; user-select: none; }
+        .btn:hover { border: 1px solid #dadce0; color: #202124; background-image: -webkit-linear-gradient(top,#f8f9fa,#f1f3f4); background-color: #f8f9fa; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+
+    <div class="logo"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div>
+    
+    <form id="searchForm">
+        <input type="text" id="query" class="search-box" autocomplete="off" autofocus>
+        <div class="buttons">
+            <button type="submit" class="btn">Google Search</button>
+            <button type="button" class="btn">I'm Feeling Lucky</button>
+        </div>
+    </form>
+
+    <script>
+        // EDIT YOUR SHORTCUT NICKNAMES HERE
+        const shortcuts = {
+            "ml": "https://stream.moonlightweb.top/e9yzx1rbxq21pasj8g3qza8ywa",
+        };
+
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let target = document.getElementById('query').value.trim().toLowerCase();
+            if (!target) return;
+
+            // 1. Check custom nicknames
+            if (shortcuts[target]) {
+                window.location.href = shortcuts[target];
+                return;
+            }
+
+            // 2. Check if text typed matches a regular URL structure
+            const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+            if (urlPattern.test(target)) {
+                if (!target.startsWith('http://') && !target.startsWith('https://')) {
+                    target = 'https://' + target;
+                }
+                window.location.href = target;
+                return;
+            }
+
+            // 3. Fallback to standard Google Search if it's a phrase
+            window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(target);
+        });
+    </script>
+
+</body>
+</html>
